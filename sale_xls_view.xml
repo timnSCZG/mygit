@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="sale_excel_views" model="ir.ui.view">
+		<field name="name">wizard.reports</field>
+		<field name="model">wizard.reports</field>
+		<field name="arch" type="xml">
+			<form string="导出销售单">
+				<p class="oe_grey">
+
+					你想输出销售单EXCEL表?
+				</p>
+				<p class="oe_grey">
+					You want to Print Sale Excel Report?
+
+				</p>
+				<footer>
+					<button string="导出Excel报表" class="btn-primary"
+						name="action_sale_report" type="object" />
+					<button string="取消" class="btn-primary" special="cancel" />
+				</footer>
+			</form>
+		</field>
+	</record>
+
+
+	<record id="sale_excel_views_new" model="ir.ui.view">
+		<field name="name">sale.report.out</field>
+		<field name="model">sale.report.out</field>
+		<field name="arch" type="xml">
+			<form string="导出销售单">
+				<group>
+					<field name="file_name" filename="sale_data" />
+					<field name="sale_data" invisible="1" />
+					<field name="file_names" filename="sale_work" />
+					<field name="sale_work" invisible="1" />
+				</group>
+				<footer>
+					<button string="取消" class="btn-primary" special="cancel" />
+				</footer>
+			</form>
+		</field>
+	</record>
+
+
+	<act_window id="action_sale_excel" 
+		name="销售单Excel报表 "
+		res_model="wizard.reports"
+		binding_model="sale.order" 
+		view_mode="form" target="new" />
+
+</odoo>
